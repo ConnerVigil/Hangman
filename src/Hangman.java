@@ -26,10 +26,13 @@ public class Hangman {
 
             if (wrongCount >= 6) {
                 System.out.println("You lose!");
+                System.out.println("The answer was... "+word);
                 break;
             }
 
             printWordState(word, playerGuesses);
+            printGuessedLetters(playerGuesses);
+
             if (!getPlayerGuess(keyboard, word, playerGuesses)) {
                 wrongCount++;
             }
@@ -98,5 +101,13 @@ public class Hangman {
                 System.out.println("");
             }
         }
+    }
+
+    private static void printGuessedLetters(List<Character> playerGuesses) {
+        System.out.print("You have guessed: ");
+        for (int i = 0; i < playerGuesses.size(); i++) {
+            System.out.print(playerGuesses.get(i)+" ");
+        }
+        System.out.println("");
     }
 }
